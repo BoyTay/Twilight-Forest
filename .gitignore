@@ -1,0 +1,66 @@
+# Unity generated folders
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Bb]uild*/
+[Ll]ogs/
+[Uu]ser[Ss]ettings/
+[Mm]emoryCaptures/
+[Rr]ecordings/
+[Ee]xportedObj/
+[Cc]rashReports/
+[Bb]ackup*/
+[Bb]ackup*/
+
+# Asset meta data created by Unity
+!/[Aa]ssets/**/*.meta
+!/[Pp]ackages/**/*.meta
+!/[Pp]roject[Ss]ettings/**/*.meta
+
+# Visual Studio / Rider / VS Code
+.vs/
+.idea/
+.consulo/
+.vscode/
+*.csproj
+*.unityproj
+*.sln
+*.slnx
+*.suo
+*.tmp
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.mdb
+*.opendb
+*.VC.db
+*.pidb.meta
+*.pdb.meta
+*.mdb.meta
+
+# Unity / IDE generated
+*.apk
+*.aab
+*.app
+*.unitypackage
+*.stacktrace
+/[Aa]ssets/[Aa]ssetStoreTools*
+
+# Unity auto-generated files
+Assets/AssetStoreTools*
+
+# Crash reports
+sysinfo.txt
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Optional local env / tooling
+.gradle/
