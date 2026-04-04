@@ -19,6 +19,10 @@ public class TransparentDetection : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.gameObject.GetComponent<PlayerController>()) {
+            if (!isActiveAndEnabled) {
+                return;
+            }
+
             if (spriteRenderer) {
                 StartCoroutine(FadeRoutine(spriteRenderer, fadeTime, spriteRenderer.color.a, transparencyAmount));
             } else if (tilemap) {
@@ -30,6 +34,10 @@ public class TransparentDetection : MonoBehaviour
     private void OnTriggerExit2D(Collider2D other) {
         if (other.gameObject.GetComponent<PlayerController>())
         {
+            if (!isActiveAndEnabled) {
+                return;
+            }
+
             if (spriteRenderer) {
                 StartCoroutine(FadeRoutine(spriteRenderer, fadeTime, spriteRenderer.color.a, 1f));
             } else if (tilemap) {
