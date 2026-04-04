@@ -19,14 +19,10 @@ public class TransparentDetection : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.gameObject.GetComponent<PlayerController>()) {
-            if (!isActiveAndEnabled) {
-                return;
-            }
-
             if (spriteRenderer) {
-                StartCoroutine(FadeRoutine(spriteRenderer, fadeTime, spriteRenderer.color.a, transparencyAmount));
+                FadeSpriteTo(transparencyAmount);
             } else if (tilemap) {
-                StartCoroutine(FadeRoutine(tilemap, fadeTime, tilemap.color.a, transparencyAmount));
+                FadeTilemapTo(transparencyAmount);
             }
         }
     }
@@ -34,16 +30,30 @@ public class TransparentDetection : MonoBehaviour
     private void OnTriggerExit2D(Collider2D other) {
         if (other.gameObject.GetComponent<PlayerController>())
         {
-            if (!isActiveAndEnabled) {
-                return;
-            }
-
             if (spriteRenderer) {
-                StartCoroutine(FadeRoutine(spriteRenderer, fadeTime, spriteRenderer.color.a, 1f));
+                FadeSpriteTo(1f);
             } else if (tilemap) {
-                StartCoroutine(FadeRoutine(tilemap, fadeTime, tilemap.color.a, 1f));
+                FadeTilemapTo(1f);
             }
         }
+    }
+
+    private void FadeSpriteTo(float targetTransparency) {
+        if (!gameObject.activeInHierarchy || !enabled) {
+            spriteRenderer.color = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, targetTransparency);
+            return;
+        }
+
+        StartCoroutine(FadeRoutine(spriteRenderer, fadeTime, spriteRenderer.color.a, targetTransparency));
+    }
+
+    private void FadeTilemapTo(float targetTransparency) {
+        if (!gameObject.activeInHierarchy || !enabled) {
+            tilemap.color = new Color(tilemap.color.r, tilemap.color.g, tilemap.color.b, targetTransparency);
+            return;
+        }
+
+        StartCoroutine(FadeRoutine(tilemap, fadeTime, tilemap.color.a, targetTransparency));
     }
 
     private IEnumerator FadeRoutine(SpriteRenderer spriteRenderer, float fadeTime, float startValue, float targetTransparency) {
